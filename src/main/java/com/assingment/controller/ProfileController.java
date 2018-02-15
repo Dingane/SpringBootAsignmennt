@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.assingment.controller.helper.WebServiceHelper;
 import com.assingment.view.AuthToken;
+import com.assingment.view.Employee;
 
 @Controller
 public class ProfileController
@@ -21,7 +22,8 @@ public class ProfileController
   public String process(Map<String, Object> model)
   {
     AuthToken token = webServiceHelper.login("pravin.gordhan", "pravin.gordhan");
-    model.put(PROFILE_KEY, webServiceHelper.invokeService(WebServiceHelper.GEL_MY_PROFILE, token.getToken()));
+    Employee profile = webServiceHelper.getProfile(token.getToken());
+    model.put(PROFILE_KEY, profile);
     return PROFILE_KEY;
   }
 

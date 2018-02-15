@@ -1,6 +1,7 @@
 package com.assingment.controller.helper;
 
 import com.assingment.view.AuthToken;
+import com.assingment.view.Employee;
 
 public interface WebServiceHelper
 {
@@ -12,4 +13,7 @@ public interface WebServiceHelper
   String invokeService(String url, String token);
 
   AuthToken login(String username, String password);
+
+  Employee getProfile(String token);
+
 }
