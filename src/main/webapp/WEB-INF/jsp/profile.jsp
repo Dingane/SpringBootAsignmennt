@@ -34,7 +34,7 @@
 	<div class="container">
 
 	   <div class="starter-template">
-			<h2>Message: ${mydetails}</h2>
+			<h2>Message: ${profile}</h2>
 	   </div>
 
 	</div>
