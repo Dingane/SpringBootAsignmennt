@@ -25,13 +25,16 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/dashboard">DashBoard</a></li>
 				</ul>
+			<div class="navbar-header" style='float: right;'>>
+            				<a class="navbar-brand" href="/profile">@${profile.user.first_name} ${profile.user.last_name}</a>
+            </div>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container">
 
-       <h2>User Detail</h2>
+       <h3>User Detail</h3>
     	<br />
 
     	<div class="row">
@@ -159,7 +162,7 @@
              		<div class="col-sm-10">${profile.leave_remaining}</div>
              	</div>
 
-       <h2>Position</h2>
+       <h3>Position</h3>
     	<br />
 
     	<div class="row">
@@ -172,7 +175,7 @@
     		<div class="col-sm-10">${profile.position.level}</div>
     	</div>
 
-    	<h2>Reviews</h2>
+    	<h3>Reviews</h3>
 
         		<table class="table table-striped">
         			<thead>

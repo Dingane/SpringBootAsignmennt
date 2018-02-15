@@ -1,5 +1,6 @@
 package com.assingment.controller.helper;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
@@ -36,6 +37,27 @@ public class WebServiceHelperImpl implements WebServiceHelper
     HttpEntity<String> request = new HttpEntity<>(headers);
     ResponseEntity<Employee> response = restTemplate.exchange(GEL_MY_PROFILE, HttpMethod.GET, request, Employee.class);
     return response.getBody();
+  }
+
+  @Override
+  public User getLoggedInUserDetails(String token)
+  {
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Authorization", "Token " + token);
+    HttpEntity<String> request = new HttpEntity<>(headers);
+    ResponseEntity<User> response = restTemplate.exchange(LOGGED_IN_USER_DETAILS_URL, HttpMethod.GET, request, User.class);
+    return response.getBody();
+  }
+
+  @Override
+  public List<Employee> getAllEmployees(String token)
+  {
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Authorization", "Token " + token);
+    HttpEntity<String> request = new HttpEntity<>(headers);
+    ResponseEntity<Employee[]> response = restTemplate.exchange(GEL_ALL_EMPLOYEES, HttpMethod.GET, request, Employee[].class);
+
+    return Arrays.asList(response.getBody());
   }
 
   public AuthToken login(String username, String password)

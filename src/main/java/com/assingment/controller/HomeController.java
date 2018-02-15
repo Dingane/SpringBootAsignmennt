@@ -17,12 +17,14 @@ public class HomeController
 
   private static final String INDEX = "index";
   private static final String MYDETAILS_KEY = "mydetails";
+  private static final String ALL_EMPLOYEES_KEY = "allEmployees";
 
   @RequestMapping("/")
   public String process(Map<String, Object> model)
   {
     AuthToken token = webServiceHelper.login("pravin.gordhan", "pravin.gordhan");
-    model.put(MYDETAILS_KEY, webServiceHelper.invokeService(WebServiceHelper.LOGGED_IN_USER_DETAILS_URL, token.getToken()));
+    model.put(MYDETAILS_KEY, webServiceHelper.getLoggedInUserDetails(token.getToken()));
+    model.put(ALL_EMPLOYEES_KEY, webServiceHelper.getAllEmployees(token.getToken()));
     return INDEX;
   }
 

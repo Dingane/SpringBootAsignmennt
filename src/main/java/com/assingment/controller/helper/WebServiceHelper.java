@@ -1,7 +1,10 @@
 package com.assingment.controller.helper;
 
+import java.util.List;
+
 import com.assingment.view.AuthToken;
 import com.assingment.view.Employee;
+import com.assingment.view.User;
 
 public interface WebServiceHelper
 {
@@ -16,4 +19,7 @@ public interface WebServiceHelper
 
   Employee getProfile(String token);
 
+  User getLoggedInUserDetails(String token);
+
+  List<Employee> getAllEmployees(String token);
 }
