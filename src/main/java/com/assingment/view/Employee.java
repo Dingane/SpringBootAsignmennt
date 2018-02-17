@@ -18,8 +18,12 @@ public class Employee
   private String visa_document;
   private boolean is_employed;
   private boolean is_foreigner;
+  private String is_employedDescription;
+  private String is_foreignerDescription;
   private String gender;
   private String race;
+  private String genderDescription;
+  private String raceDescription;
   private int years_worked;
   private int age;
   private String next_review;
@@ -279,4 +283,45 @@ public class Employee
   //  {
   //    this.employee_next_of_kin = employee_next_of_kin;
   //  }
+
+  public String getGenderDescription()
+  {
+
+    return genderDescription = gender.equals("M") ? "Male" : "Female";
+  }
+
+  public String getRaceDescription()
+  {
+    if (race.equals("B"))
+    {
+      raceDescription = "Black";
+    }
+    else if (race.equals("W"))
+    {
+      raceDescription = "White";
+    }
+    else if (race.equals("I"))
+    {
+      raceDescription = "Indian or Asian";
+    }
+    else if (race.equals("C"))
+    {
+      raceDescription = "Colored";
+    }
+    else
+    {
+      raceDescription = "None Dominant";
+    }
+    return raceDescription;
+  }
+
+  public String getIs_employedDescription()
+  {
+    return is_employedDescription = is_employed ? "Yes" : "No";
+  }
+
+  public String getIs_foreignerDescription()
+  {
+    return is_foreignerDescription = is_foreigner ? "Yes" : "No";
+  }
 }

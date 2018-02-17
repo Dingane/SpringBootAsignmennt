@@ -13,19 +13,207 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Profile</h1>
-    </div>
 
+        <button class="accordion" id="personal">Personal</button>
+
+        <div id="personal_div">
+            <div class="panel">
+
+                <div class="row">
+                    <label class="col-sm-2">User Name</label>
+                    <div class="col-sm-10" th:text="${profile.user.username}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Email</label>
+                    <div class="col-sm-10" th:text="${profile.user.email}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">First Name</label>
+                    <div class="col-sm-10" th:text="${profile.user.first_name}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Last Name</label>
+                    <div class="col-sm-10" th:text="${profile.user.last_name}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Active</label>
+                    <div class="col-sm-10" th:text="${profile.user.is_active}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Is Staff</label>
+                    <div class="col-sm-10" th:text="${profile.user.is_staff}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Phone Number</label>
+                    <div class="col-sm-10" th:text="${profile.phone_number}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Physical Address</label>
+                    <div class="col-sm-10" th:text="${profile.physical_address}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Tax number</label>
+                    <div class="col-sm-10" th:text="${profile.tax_number}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Personal Email</label>
+                    <div class="col-sm-10" th:text="${profile.personal_email}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Github User</label>
+                    <div class="col-sm-10" th:text="${profile.github_user}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Birth Date</label>
+                    <div class="col-sm-10" th:text="${profile.birth_date}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Start Date</label>
+                    <div class="col-sm-10" th:text="${profile.start_date}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">End Date</label>
+                    <div class="col-sm-10" th:text="${profile.end_date}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Id Document</label>
+                    <div class="col-sm-10" th:text="${profile.id_document}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Visa Document</label>
+                    <div class="col-sm-10" th:text="${profile.visa_document}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Is Employed</label>
+                    <div class="col-sm-10" th:text="${profile.is_employedDescription}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Is Foreigner</label>
+                    <div class="col-sm-10" th:text="${profile.is_foreignerDescription}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Gender</label>
+                    <div class="col-sm-10" th:text="${profile.genderDescription}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Race</label>
+                    <div class="col-sm-10" th:text="${profile.raceDescription}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Years Worked</label>
+                    <div class="col-sm-10" th:text="${profile.years_worked}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Age</label>
+                    <div class="col-sm-10" th:text="${profile.age}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Next Review Date</label>
+                    <div class="col-sm-10" th:text="${profile.next_review}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Number of Days to Birth Date</label>
+                    <div class="col-sm-10" th:text="${profile.days_to_birthday}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Leave Days</label>
+                    <div class="col-sm-10" th:text="${profile.leave_remaining}"/>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion" id="position">Position</button>
+        <div id="position_div">
+            <div class="panel">
+                <div class="row">
+                    <label class="col-sm-2">Name</label>
+                    <div class="col-sm-10" th:text="${profile.position.name}"/>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2">Level</label>
+                    <div class="col-sm-10" th:text="${profile.position.level}"/>
+                </div>
+            </div>
+        </div>
+        <button class="accordion" id="review">Reviews</button>
+
+        <div id="review_div">
+            <div class="panel">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Salary</th>
+                        <th>Type</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="employee_review : ${profile.employee_review}">
+                        <td th:text="${employee_review.date}"></td>
+                        <td th:text="${employee_review.salary}"></td>
+                        <td th:text="${employee_review.description}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
 </div>
 <!-- /.container -->
 
 <div th:replace="fragments/footer :: footer"/>
 <script>
-    $("#dashboard").attr('class', '');
-    $("#profile").attr('class', 'active');
-    $("#home").attr('class', '');
-    $("#login").attr('class', '');
 
+    toggleNavigation();
+
+    function toggleNavigation()
+    {
+        $("#dashboard").attr('class', '');
+        $("#profile").attr('class', 'active');
+        $("#home").attr('class', '');
+        $("#login").attr('class', '');
+    }
+
+
+    $( "#personal" ).click(function() {
+      $( "#personal_div" ).toggle( "slow", function() {
+      });
+    });
+
+
+    $( "#position" ).click(function() {
+      $( "#position_div" ).toggle( "slow", function() {
+      });
+    });
+
+    $( "#review" ).click(function() {
+      $( "#review_div" ).toggle( "slow", function() {
+      });
+    });
 
 </script>
 </body>
