@@ -15,14 +15,16 @@ public class DashBoardController
   @Autowired
   private WebServiceHelper webServiceHelper;
 
+  @Autowired
+  private AuthToken authToken;
+
   private static final String DASHBOARD = "dashboard";
-  private static final String DASHBOARD1_KEY = "dashboard";
+  private static final String ALL_EMPLOYEES_KEY = "allEmployees";
 
   @RequestMapping("/dashboard")
   public String process(Map<String, Object> model)
   {
-    AuthToken token = webServiceHelper.login("pravin.gordhan", "pravin.gordhan");
-    model.put(DASHBOARD1_KEY, webServiceHelper.invokeService(WebServiceHelper.GEL_ALL_EMPLOYEES, token.getToken()));
+    model.put(ALL_EMPLOYEES_KEY, webServiceHelper.getAllEmployees(authToken.getToken()));
     return DASHBOARD;
   }
 

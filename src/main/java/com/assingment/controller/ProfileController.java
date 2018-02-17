@@ -16,13 +16,15 @@ public class ProfileController
   @Autowired
   private WebServiceHelper webServiceHelper;
 
+  @Autowired
+  private AuthToken authToken;
+
   private static final String PROFILE_KEY = "profile";
 
   @RequestMapping("/profile")
   public String process(Map<String, Object> model)
   {
-    AuthToken token = webServiceHelper.login("pravin.gordhan", "pravin.gordhan");
-    Employee profile = webServiceHelper.getProfile(token.getToken());
+    Employee profile = webServiceHelper.getProfile(authToken.getToken());
     model.put(PROFILE_KEY, profile);
     return PROFILE_KEY;
   }

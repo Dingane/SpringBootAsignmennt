@@ -1,5 +1,8 @@
 package com.assingment.view;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AuthToken
 {
   private String token;
