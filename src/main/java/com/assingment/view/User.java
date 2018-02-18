@@ -10,6 +10,9 @@ public class User
   private boolean is_active;
   private boolean is_staff;
 
+  private String is_activeDescription;
+  private String is_staffDesc;
+
   public Integer getId()
   {
     return id;
@@ -79,4 +82,15 @@ public class User
   {
     this.is_staff = is_staff;
   }
+
+  public String getIs_activeDescription()
+  {
+    return is_activeDescription = is_active ? "Yes" : "No";
+  }
+
+  public String getIs_staffDesc()
+  {
+    return is_staffDesc = is_staff ? "Yes" : "No";
+  }
+
 }
