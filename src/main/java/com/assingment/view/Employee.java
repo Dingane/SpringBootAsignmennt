@@ -1,5 +1,8 @@
 package com.assingment.view;
 
+import static com.assingment.controller.helper.Constants.*;
+
+import java.util.Date;
 import java.util.List;
 
 public class Employee
@@ -11,7 +14,7 @@ public class Employee
   private String email;
   private String personal_email;
   private String github_user;
-  private String birth_date;
+  private Date birth_date;
   private String start_date;
   private String end_date;
   private String id_document;
@@ -104,12 +107,12 @@ public class Employee
     this.github_user = github_user;
   }
 
-  public String getBirth_date()
+  public Date getBirth_date()
   {
     return birth_date;
   }
 
-  public void setBirth_date(String birth_date)
+  public void setBirth_date(Date birth_date)
   {
     this.birth_date = birth_date;
   }
@@ -292,34 +295,37 @@ public class Employee
 
   public String getRaceDescription()
   {
-    if (race.equals("B"))
+    //TODO handle in UI
+    if (RACE_BLACK_KEY.equals(race))
     {
-      raceDescription = "Black";
+      raceDescription = BLACK;
     }
-    else if (race.equals("W"))
+    else if (RACE_WHITE_KEY.equals(race))
     {
-      raceDescription = "White";
+      raceDescription = WHITE;
     }
-    else if (race.equals("I"))
+    else if (RACE_INDIAN_KEY.equals(race))
     {
-      raceDescription = "Indian or Asian";
+      raceDescription = INDIAN_OR_ASIAN;
     }
-    else if (race.equals("C"))
+    else if (RACE_COLORED_KEY.equals(race))
     {
-      raceDescription = "Colored";
+      raceDescription = COLORED;
     }
     else
     {
-      raceDescription = "None Dominant";
+      raceDescription = NONE_DOMINENT;
     }
     return raceDescription;
   }
 
+  //TODO handle in UI
   public String getIs_employedDescription()
   {
     return is_employedDescription = is_employed ? "Yes" : "No";
   }
 
+  //TODO handle in UI
   public String getIs_foreignerDescription()
   {
     return is_foreignerDescription = is_foreigner ? "Yes" : "No";

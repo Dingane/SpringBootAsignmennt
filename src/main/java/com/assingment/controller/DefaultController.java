@@ -23,12 +23,6 @@ public class DefaultController
     return "/index";
   }
 
-  @GetMapping("/dashboard")
-  public String dashboard()
-  {
-    return "/dashboard";
-  }
-
   @GetMapping("/403")
   public String error403()
   {

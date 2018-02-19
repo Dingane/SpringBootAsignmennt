@@ -60,6 +60,17 @@ public class WebServiceHelperImpl implements WebServiceHelper
     return Arrays.asList(response.getBody());
   }
 
+  @Override
+  public List<Employee> getAllEmployeesBy(String race, String gender, String token)
+  {
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Authorization", "Token " + token);
+    HttpEntity<String> request = new HttpEntity<>(headers);
+    ResponseEntity<Employee[]> response = restTemplate.exchange(GEL_ALL_EMPLOYEES + "?race={race}&gender={gender}", HttpMethod.GET, request, Employee[].class, race, gender);
+
+    return Arrays.asList(response.getBody());
+  }
+
   public AuthToken login(String username, String password)
   {
     HttpHeaders headers = new HttpHeaders();

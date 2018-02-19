@@ -15,6 +15,8 @@ public interface WebServiceHelper
 
   String invokeService(String url, String token);
 
+  List<Employee> getAllEmployeesBy(String race, String gender, String token);
+
   AuthToken login(String username, String password);
 
   Employee getProfile(String token);

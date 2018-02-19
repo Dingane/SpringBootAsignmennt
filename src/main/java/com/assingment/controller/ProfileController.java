@@ -1,5 +1,7 @@
 package com.assingment.controller;
 
+import static com.assingment.controller.helper.Constants.PROFILE_KEY;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +21,10 @@ public class ProfileController
   @Autowired
   private AuthToken authToken;
 
-  private static final String PROFILE_KEY = "profile";
-
   @RequestMapping("/profile")
   public String process(Map<String, Object> model)
   {
-    Employee profile = webServiceHelper.getProfile(authToken.getToken());
-    model.put(PROFILE_KEY, profile);
+    model.put(PROFILE_KEY, webServiceHelper.getProfile(authToken.getToken()));
     return PROFILE_KEY;
   }
 

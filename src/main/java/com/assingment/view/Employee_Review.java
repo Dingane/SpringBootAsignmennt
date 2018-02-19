@@ -1,9 +1,11 @@
 package com.assingment.view;
 
+import java.util.Date;
+
 public class Employee_Review
 {
   private String id;
-  private String date;
+  private Date date;
   private String salary;
   private String type;
   private String description;
@@ -18,12 +20,12 @@ public class Employee_Review
     this.id = id;
   }
 
-  public String getDate()
+  public Date getDate()
   {
     return date;
   }
 
-  public void setDate(String date)
+  public void setDate(Date date)
   {
     this.date = date;
   }
@@ -50,6 +52,7 @@ public class Employee_Review
 
   public String getDescription()
   {
+    //TODO Handle in UI
     if (type.equals("P"))
     {
       description = "Performance Increase";
@@ -62,7 +65,7 @@ public class Employee_Review
     {
       description = "Annual Increase";
     }
-    else if (type == "E")
+    else if (type.equals("E"))
     {
       description = "Expectation Review";
     }

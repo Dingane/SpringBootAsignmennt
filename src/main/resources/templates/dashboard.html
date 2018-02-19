@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <title>Dashboard</title>
+
+    <script type="text/javascript" src="../../js/fusioncharts.js"></script>
+    <script type="text/javascript" src="../../js/themes/fusioncharts.theme.fint.js"></script>
 
     <div th:replace="fragments/header :: header-css"/>
 
@@ -12,8 +15,100 @@
 
 <div class="container">
 
-    <div class="starter-template">
-        <h1>Dashobard</h1>
+
+    <button class="accordion" id="beee_standing">BBBEE standing</button>
+
+    <div id="beee_standing_div">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Colored</th>
+                <th>Black</th>
+                <th>Indian</th>
+                <th>White</th>
+                <th>Non Dominant</th>
+                <th>Female</th>
+                <th>Male</th>
+                <th>All Employees</th>
+            </tr>
+            </thead>
+            <tr>
+                <td th:text="${numberOfColoredEmployees}"></td>
+                <td th:text="${numberOfBlackEmployees}"></td>
+                <td th:text="${numberOfIndianEmployees}"></td>
+                <td th:text="${numberOfWhiteEmployees}"></td>
+                <td th:text="${numberOfNonDominantEmployees}"></td>
+                <td th:text="${numberOfFemaleEmployees}"></td>
+                <td th:text="${numberOfMaleEmployees}"></td>
+                <td th:text="${numberOfEmployees}"></td>
+            </tr>
+        </table>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <div id="chartContainer1">Employee Race chart will load here!</div>
+                </td>
+                <td>
+                    <div id="chartContainer2">Employee Gender chart will load here!</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="accordion" id="birthdays_this_month">Upcoming Employees Birthday's this month</button>
+
+    <div id="birthdays_this_month_div">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Level</th>
+                <th>Birth Date</th>
+                <th>Active</th>
+            </tr>
+            </thead>
+
+            <tr th:each="employee : ${employeesHavingBirthDateThisMonth}">
+                <td th:text="${employee.user.first_name}"></td>
+                <td th:text="${employee.user.email}"></td>
+                <td th:text="${employee.position.name}"></td>
+                <td th:text="${employee.position.level}"></td>
+                <td th:text="${employee.birth_date}"></td>
+                <td th:text="${employee.user.is_activeDescription}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="accordion" id="all_employees">All Employees</button>
+    <div id="all_employees_div">
+
+        <form action="search" class="navbar-form navbar-right" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" id="search_name" name="search_name"></input>
+            </div>
+            <button type="submit" class="btn btn-info" id="searchButton">Search</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Level</th>
+                <th>Active</th>
+            </tr>
+            </thead>
+
+            <tr th:each="employee : ${allEmployees}">
+                <td th:text="${employee.user.first_name}"></td>
+                <td th:text="${employee.user.email}"></td>
+                <td th:text="${employee.position.name}"></td>
+                <td th:text="${employee.position.level}"></td>
+                <td th:text="${employee.user.is_activeDescription}"></td>
+            </tr>
+        </table>
     </div>
 
 </div>
@@ -26,7 +121,48 @@
     $("#home").attr('class', '');
     $("#login").attr('class', '');
 
+FusionCharts.ready(function() {
+    var raceFusioncharts = new FusionCharts({
+        type: 'pie3d',
+        renderAt: 'chartContainer1',
+        width: '500',
+        height: '300',
+        dataFormat: 'jsonurl',
+        dataSource: '/reportData?type=R'
+    });
+    raceFusioncharts.render();
 
+      var genderFusioncharts = new FusionCharts({
+        type: 'pie3d',
+        renderAt: 'chartContainer2',
+        width: '500',
+        height: '300',
+        dataFormat: 'jsonurl',
+        dataSource: '/reportData?type=G'
+    });
+    genderFusioncharts.render();
+    });
+
+
+
+    $( "#beee_standing" ).click(function() {
+      $( "#beee_standing_div" ).toggle( "slow", function() {
+      });
+    });
+
+
+    $( "#birthdays_this_month" ).click(function() {
+      $( "#birthdays_this_month_div" ).toggle( "slow", function() {
+      });
+    });
+
+    $( "#all_employees" ).click(function() {
+      $( "#all_employees_div" ).toggle( "slow", function() {
+      });
+    });
+
+    $('#birthdays_this_month_div').hide();
+    $('#all_employees_div').hide();
 </script>
 </body>
 </html>
